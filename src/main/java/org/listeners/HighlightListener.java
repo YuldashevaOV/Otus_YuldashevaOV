@@ -17,11 +17,8 @@ public class HighlightListener implements WebDriverListener {
     // Подсвечиваем объект
     @Override
     public void beforeClick(WebElement element) {
-        System.out.println("=== THE LISTENER HAS WORKED ===");
         String className = element.getAttribute("class");
-        System.out.println("Element class: " + className);
         if (className != null && className.contains("btn-primary")) {
-            System.out.println("=== CONDITION FULFILLED, HIGHLIGHTING ===");
             WebElement card = element.findElement(By.xpath("./ancestor::div[contains(@class, 'card')]"));
             higlightFrame(card, "green");
         }
