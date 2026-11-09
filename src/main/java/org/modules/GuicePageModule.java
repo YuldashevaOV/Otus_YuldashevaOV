@@ -6,6 +6,10 @@ import com.google.inject.Singleton;
 import org.openqa.selenium.WebDriver;
 import org.pages.*;
 
+/**
+ * DI-фреймворк
+ */
+
 public class GuicePageModule extends AbstractModule {
 
     private WebDriver driver;
