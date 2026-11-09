@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -23,12 +24,13 @@ public class WishlistPage extends AbsBasePage {
     // Клик по кнопке "Просмотр"
     public void openWishlist() {
         waiters.waitForCondition(ExpectedConditions.visibilityOf(viewButton));
-        viewButton.click();
+        actions.moveToElement(viewButton).click().perform();
     }
 
     //Проверяем, что перешли в список желаний
     public void verifyWishlist(String expectedTitle) {
         HeaderComponent headerComponent = new HeaderComponent(driver);
+        headerComponent.waitForText(expectedTitle);
         String actualTitle = headerComponent.getText();
         Assertions.assertTrue(actualTitle.contains(expectedTitle),"Заголовок не совпадает");
     }

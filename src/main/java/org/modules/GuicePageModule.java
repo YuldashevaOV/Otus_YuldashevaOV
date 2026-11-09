@@ -4,10 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import org.openqa.selenium.WebDriver;
-import org.pages.LoginPage;
-import org.pages.MainPage;
-import org.pages.UsersPage;
-import org.pages.WishlistPage;
+import org.pages.*;
 
 public class GuicePageModule extends AbstractModule {
 
@@ -39,6 +36,12 @@ public class GuicePageModule extends AbstractModule {
     @Singleton
     public UsersPage getUsersPage() {
         return new UsersPage(driver);
+    }
+
+    @Provides
+    @Singleton
+    public UsersWishlistsPage getUsersWishlists() {
+        return new UsersWishlistsPage(driver);
     }
 
 }

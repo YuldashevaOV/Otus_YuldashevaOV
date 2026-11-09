@@ -1,6 +1,7 @@
 package org.pages;
 
 import org.annotations.Path;
+import org.components.HeaderComponent;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +27,6 @@ public class LoginPage extends AbsBasePage {
 
     public void loginAs(String username, String password) {
         waiters.waitForElementVisible(By.cssSelector("input[type='text']"));
-
         usernameInput.clear();
         passwordInput.clear();
         usernameInput.sendKeys(username);
@@ -38,5 +38,12 @@ public class LoginPage extends AbsBasePage {
     public void verifyUserIsLoggedIn() {
         boolean isVisible = waiters.waitForElementVisible(By.cssSelector("a[role='button']"));
         Assertions.assertTrue(isVisible, "Авторизация не прошла");
+    }
+
+    public void verifyLoginPage(String expectedTitle) {
+        HeaderComponent headerComponent = new HeaderComponent(driver);
+        headerComponent.waitForText(expectedTitle);
+        String actualTitle = headerComponent.getText();
+        Assertions.assertTrue(actualTitle.contains(expectedTitle),"Заголовок не совпадает");
     }
 }

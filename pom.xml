@@ -29,6 +29,7 @@
         <password>Test1234!</password>
         <expected.max.price>7450</expected.max.price>
         <expected.min.price>1850</expected.min.price>
+        <target.user>Admin123</target.user>
     </properties>
 
     <dependencies>
@@ -88,6 +89,7 @@
                         <browser.name>chrome</browser.name>
                         <expected.max.price>${expected.max.price}</expected.max.price>
                         <expected.min.price>${expected.min.price}</expected.min.price>
+                        <target.user>${target.user}</target.user>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

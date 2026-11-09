@@ -38,12 +38,16 @@ public class UsersTest {
 
         // Переход в раздел "Пользователи"
         usersPage.openUsers();
-        usersPage.verifyUsers("Пользователи");
+        usersPage.verifyUsersPage("Пользователи");
 
         //Ждем загрузки карточек пользователей
         usersPage.waitUsersCardBody();
 
         //Проверяем, что список не пустой
         Assertions.assertTrue(usersPage.getUsersCount() > 0);
+
+        //Логаут
+        usersPage.logout();
+        loginPage.verifyLoginPage("Вход в систему");
     }
 }

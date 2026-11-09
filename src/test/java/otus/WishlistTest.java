@@ -52,5 +52,9 @@ public class WishlistTest {
                 "Самый дорогой подарок не совпадает с ожидаемым");
         Assertions.assertEquals(expectedMin, minPrice,
                 "Самый дешевый подарок не совпадает с ожидаемым");
+
+        //Логаут
+        wishlistPage.logout();
+        loginPage.verifyLoginPage("Вход в систему");
     }
 }

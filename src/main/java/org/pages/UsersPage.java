@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -23,14 +24,15 @@ public class UsersPage extends AbsBasePage {
     // Клик по кнопке "Пользователи"
     public void openUsers() {
         waiters.waitForCondition(ExpectedConditions.visibilityOf(viewUsers));
-        viewUsers.click();
+        actions.moveToElement(viewUsers).click().perform();
     }
 
     //Проверяем, что перешли в список пользователей
-    public void verifyUsers(String expectedTitle) {
+    public void verifyUsersPage(String expectedTitle) {
         HeaderComponent headerComponent = new HeaderComponent(driver);
+        headerComponent.waitForText(expectedTitle);
         String actualTitle = headerComponent.getText();
-        Assertions.assertTrue(actualTitle.contains(expectedTitle),"Заголовок не совпадает");
+        Assertions.assertTrue(actualTitle.contains(expectedTitle), "Заголовок не совпадает");
     }
 
     //Ждем прогрузки хотя бы одной карточки пользователя
@@ -42,4 +44,23 @@ public class UsersPage extends AbsBasePage {
     public int getUsersCount() {
         return driver.findElements(By.cssSelector(".card")).size();
     }
+
+    //Поиск карточки пользователя по логину
+    public WebElement findUserCardByName(String username) {
+        By xpathLocator = By.xpath(String.format("//div[contains(@class, 'card') and .//div[contains(text(), '%s')]]", username));
+        waiters.waitForCondition(ExpectedConditions.visibilityOfElementLocated(xpathLocator));
+        return driver.findElement(xpathLocator);
+    }
+
+    public WebElement findTargetUserCard() {
+        String targetUser = System.getProperty("target.user");
+        return findUserCardByName(targetUser);
+    }
+
+    // Клик по кнопке "Посмотреть списки желаний"
+    public void clickViewWishlistsButton(WebElement userCard) {
+        WebElement viewButton = userCard.findElement(By.cssSelector("a.btn-primary"));
+        viewButton.click();
+    }
+
 }

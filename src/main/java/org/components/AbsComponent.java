@@ -25,11 +25,12 @@ public abstract class AbsComponent extends AbsCommon {
                     .as("Error")
                     .isTrue();
         } catch (Exception e) {
+            System.out.println("Ошибка при поиске компонента: " + e.getMessage());
         }
 
     }
 
-    private By componentMetaDataAdapter() {
+    protected By componentMetaDataAdapter() {
         Class clazz = getClass();
         if (clazz.isAnnotationPresent(Component.class)) {
             Component component = (Component) clazz.getDeclaredAnnotation(Component.class);
