@@ -45,3 +45,11 @@ mvn checkstyle:check
 ```bash
 mvn spotbugs:check
 ```
+### Запуск с регистрацией пользователя через Rest API. Сценарий 2 (Явные ожидания)
+```bash
+mvn clean test -Dtest=UsersTest -Dlogin= -Dpassword=
+```
+### Запуск с регистрацией пользователя через Rest API. Сценарий 3 (Поиск пользователя и подсветка элемента)
+```bash
+mvn clean test -Dtest=UsersWishlistsTest -Dlogin= -Dpassword=
+```
