@@ -9,7 +9,7 @@ import java.io.IOException;
 public class UsersPrepareAPI extends AbsRestClient {
 
     public void registerUser(User user) throws IOException, InterruptedException {
-        String requestBody = String.format("{username: \"%s\", email: \"%s\", password: \"%s\"}",
+        String requestBody = String.format("{\"username\":\"%s\",\"email\":\"%s\",\"password\":\"%s\"}",
                 user.getUsername(), user.getEmail(), user.getPassword());
         this.post("/api/auth/register", requestBody);
     }
