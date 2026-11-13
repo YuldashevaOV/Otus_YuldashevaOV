@@ -8,16 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebElement;
 import org.pages.LoginPage;
-import org.pages.MainPage;
 import org.pages.UsersPage;
 import org.pages.UsersWishlistsPage;
 import org.prepare.User;
 
 @ExtendWith(UIExtension.class)
 public class UsersWishlistsTest {
-
-    @Inject
-    private MainPage mainPage;
 
     @Inject
     private LoginPage loginPage;
@@ -35,7 +31,6 @@ public class UsersWishlistsTest {
     @DisplayName("Сценарий 3. Поиск пользователя и подсветка элемента")
     public void checkUserHighlightAndNavigate() {
         // Авторизация
-        mainPage.open();
         loginPage.open();
         loginPage.loginAs(user.getUsername(), user.getPassword());
         loginPage.verifyUserIsLoggedIn();

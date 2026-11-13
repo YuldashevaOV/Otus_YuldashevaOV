@@ -20,12 +20,6 @@ public class GuicePageModule extends AbstractModule {
 
     @Provides
     @Singleton
-    public MainPage getMainPage() {
-        return new MainPage(driver);
-    }
-
-    @Provides
-    @Singleton
     public LoginPage getLoginPage() {
         return new LoginPage(driver);
     }

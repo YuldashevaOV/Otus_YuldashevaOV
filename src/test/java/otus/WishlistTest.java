@@ -7,15 +7,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.pages.LoginPage;
-import org.pages.MainPage;
 import org.pages.WishlistPage;
 import org.prepare.User;
 
 @ExtendWith(UIExtension.class)
 public class WishlistTest {
-
-    @Inject
-    private MainPage mainPage;
 
     @Inject
     private User user;
@@ -30,7 +26,6 @@ public class WishlistTest {
     @DisplayName("Сценарий 1. Выбор самого дорогого и самого дешёвого подарка")
     public void checkMaxAndMinGiftPrice() {
         // Авторизация
-        mainPage.open();
         loginPage.open();
         loginPage.loginAs(user.getUsername(), user.getPassword());
         loginPage.verifyUserIsLoggedIn();

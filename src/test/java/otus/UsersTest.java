@@ -7,15 +7,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.pages.LoginPage;
-import org.pages.MainPage;
 import org.pages.UsersPage;
 import org.prepare.User;
 
 @ExtendWith(UIExtension.class)
 public class UsersTest {
-
-    @Inject
-    private MainPage mainPage;
 
     @Inject
     private LoginPage loginPage;
@@ -31,7 +27,6 @@ public class UsersTest {
     public void checkUsersListLoading() {
 
         // Авторизация
-        mainPage.open();
         loginPage.open();
         loginPage.loginAs(user.getUsername(), user.getPassword());
         loginPage.verifyUserIsLoggedIn();
